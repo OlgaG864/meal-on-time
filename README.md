@@ -1,2 +1,2 @@
 # meal-on-time
-Food deliveries and take-outs with React
+Food delivery or takeaway with React
