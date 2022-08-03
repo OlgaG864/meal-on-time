@@ -24,7 +24,10 @@ function Card(props: Props) {
                     {props.description}
                 </div>
                 <div>{props.price}</div>
-                <div>Rating: {props.rating}</div>
+                <div>
+                    Rating: {props.rating}
+                    <i className='bi-star'></i>
+                </div>
                 <button className='btn btn-primary'>Order Now</button>
             </div>
         </div>
