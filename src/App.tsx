@@ -1,10 +1,11 @@
-import React from 'react';
 import './App.css';
 import Card from './Card/Card';
+// import Counter from './Counter/Counter';
 import Header from './Header/Header';
 
 function App() {
     return (
+        // <Counter initCounter={50} />
         <>
             <Header />
 
