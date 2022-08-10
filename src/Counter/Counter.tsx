@@ -20,18 +20,18 @@ class Counter extends React.Component<CounterProps, CounterState> {
         }
     }
 
-    componentDidMount() {
-        this.intervalId = window.setInterval(
-            () => this.increment(),
-            1000
-        )
-    }
+    // componentDidMount() {
+    //     this.intervalId = window.setInterval(
+    //         () => this.increment(),
+    //         1000
+    //     )
+    // }
 
-    componentWillUnmount() {
-        clearInterval(this.intervalId);
-    }
+    // componentWillUnmount() {
+    //     clearInterval(this.intervalId);
+    // }
 
-    increment() {
+    increment = () => {
         this.setState((state, props) => ({
             counter: state.counter + 1
         }))
@@ -39,7 +39,10 @@ class Counter extends React.Component<CounterProps, CounterState> {
 
     render() {
         return (
-            <div>Counter value is: {this.state.counter}</div>
+            <>
+                <div>Counter value is: {this.state.counter}</div>
+                <div><button onClick={this.increment}>Increase Counter</button></div>
+            </>
         );
     }
 }
