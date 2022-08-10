@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
+import "./Menu.css";
 
 type displayMode = 'grid' | 'list';
 
@@ -35,6 +36,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
     render() {
         return (
             <>
+                <h1>Order Delivery or Takeaway</h1>
+
                 <div className="d-flex">
                     <button onClick={(e) => this.changeDisplay('list')} className="btn btn-default">
                         <i className="bi-list-ul"></i>
@@ -44,7 +47,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
                     </button>
                 </div>
 
-                <div className={this.state.display === 'list' ? 'd-flex flex-column' : 'd-flex'}>
+                <div className={this.state.display}>
                     <Card name="Fried Chicken"
                         description="fried chicken with chips"
                         category="Chicken"

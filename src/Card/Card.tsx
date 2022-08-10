@@ -15,7 +15,7 @@ class Card extends React.Component<Props> {
 
     render() {
         return (
-            <div className="card">
+            <div className="card border-0 m-4 shadow bg-dark bg-opacity-10">
                 <img src={this.props.imageUrl} alt={this.props.name} className="card-img-top" />
                 <div>{this.props.category}</div>
                 <div className="card-body">
