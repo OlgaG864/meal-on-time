@@ -1,4 +1,3 @@
-import React from 'react';
 import './Card.css';
 
 interface Props {
@@ -13,22 +12,22 @@ interface Props {
 function Card(props: Props) {
 
     return (
-        <div className='card'>
+        <div className="card">
             <img src={props.imageUrl} alt={props.name} className="card-img-top" />
             <div>{props.category}</div>
-            <div className='card-body'>
-                <div className='card-title'>
+            <div className="card-body">
+                <div className="card-title">
                     {props.name}
                 </div>
-                <div className='card-text'>
+                <div className="card-text">
                     {props.description}
                 </div>
                 <div>{props.price}</div>
                 <div>
                     Rating: {props.rating}
-                    <i className='bi-star'></i>
+                    <i className="bi-star"></i>
                 </div>
-                <button className='btn btn-primary'>Order Now</button>
+                <button className="btn btn-primary">Order Now</button>
             </div>
         </div>
     );
