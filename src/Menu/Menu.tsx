@@ -51,35 +51,31 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     changeDisplay = (mode: displayMode) => {
-        // 1) I was missing parenthesis
-        // this.setState((state, props) => {
-        //     display: mode
-        // })
-
-        // 2) this.props and this.state may be updated asynchronously - get use to this
         this.setState((state, props) => ({
             display: mode
         }));
-
-        // works in this case - no call to this.props and this.state
-        // this.setState({
-        //     ...this.state,
-        //     display: mode
-        // })
     }
 
     render() {
         return (
             <>
-                <h1>Order Delivery or Takeaway</h1>
+                <h1 className="text-center m-3">Order Delivery or Takeaway</h1>
 
-                <div className="d-flex">
-                    <button onClick={(e) => this.changeDisplay('list')} className="btn btn-default">
-                        <i className="bi-list-ul"></i>
-                    </button>
-                    <button onClick={(e) => this.changeDisplay('grid')} className="btn btn-default">
-                        <i className="bi-grid-3x3-gap-fill"></i>
-                    </button>
+                <div className="d-flex justify-content-between px-5">
+                    <div className="d-flex align-items-center">
+                        <label className="pe-2">Category:</label>
+                        <select className="form-select">
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button onClick={(e) => this.changeDisplay('list')} className="btn btn-default">
+                            <i className="bi-list-ul"></i>
+                        </button>
+                        <button onClick={(e) => this.changeDisplay('grid')} className="btn btn-default">
+                            <i className="bi-grid-3x3-gap-fill"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <div className={this.state.display}>
