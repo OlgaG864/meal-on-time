@@ -24,7 +24,7 @@ class Card extends React.Component<Props> {
         return (
             <div className="card border-0 m-4 shadow bg-dark bg-opacity-10">
                 <img src={data.imageUrl} alt={data.name} className="card-img-top" />
-                <div>{data.category}</div>
+                <div className='text-capitalize'>{data.category}</div>
                 <div className="card-body">
                     <div className="card-title">
                         {data.name}
