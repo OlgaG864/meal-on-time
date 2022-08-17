@@ -75,8 +75,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
         }));
     }
 
-    categoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selected = event.target.value;
+    categoryChange = (selected: string) => {
+        // const selected = event.target.value;
         // event.preventDefault();
 
         const cards = [...this.state.cards];
@@ -101,7 +101,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
                 <div className="d-flex justify-content-between px-5">
                     <div className="d-flex align-items-center">
                         <label className="pe-2">Category:</label>
-                        <select onChange={this.categoryChange}
+                        <select onChange={(e) => this.categoryChange(e.target.value)}
                             value={this.state.selectedCategory} className="form-select text-capitalize">
                             {
                                 this.state.categories.map((category) =>
@@ -123,7 +123,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
                 <div className={this.state.display}>
                     {
                         this.state.cardsDisplay.map((card) =>
-                            <Card key={card.id} data={card} />
+                            <Card
+                                key={card.id}
+                                data={card}
+                                categoryChange={this.categoryChange} />
                         )
                     }
                 </div>
