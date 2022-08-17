@@ -1,29 +1,29 @@
-const { string } = require('joi');
+// const { string } = require('joi');
 const mongoose = require('mongoose');
 
 const cardSchema = new mongoose.Schema({
     name: {
-        type: string,
+        type: String,
         require: true,
     },
     description: {
-        type: string,
+        type: String,
         require: true,
     },
     category: {
-        type: string,
+        type: String,
         require: true,
     },
     price: {
-        type: decimal,
+        type: Number,
         require: true,
     },
     rating: {
-        type: int32,
+        type: Number,
         require: true,
     },
     imageUrl: {
-        type: string,
+        type: String,
         require: true,
     },
 });
