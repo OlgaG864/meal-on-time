@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Card.css';
 
 export type CardType = {
-    id: number;
+    _id: string;
     name: string;
     description: string;
     category: string;
@@ -42,7 +42,7 @@ class Card extends React.Component<Props> {
                         <i className="bi-star"></i>
                     </div>
 
-                    <Link to="/order" className="btn btn-primary">
+                    <Link to="/order" state={data} className="btn btn-primary">
                         Order Now
                     </Link>
                 </div>
