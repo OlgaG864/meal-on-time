@@ -91,6 +91,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     render() {
+        // conditional rendering - if no dishes display an empty page
+        if (this.state.cardsDisplay.length === 0) return <p>No dishes in menu</p>;
+
         return (
             <>
                 <h1 className="text-center m-3">Order Delivery or Takeaway</h1>
