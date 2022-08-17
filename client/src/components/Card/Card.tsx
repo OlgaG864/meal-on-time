@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Card.css';
 
 export type CardType = {
@@ -40,7 +41,10 @@ class Card extends React.Component<Props> {
                         Rating: {data.rating}
                         <i className="bi-star"></i>
                     </div>
-                    <button className="btn btn-primary">Order Now</button>
+
+                    <Link to="/order" className="btn btn-primary">
+                        Order Now
+                    </Link>
                 </div>
             </div>
         );

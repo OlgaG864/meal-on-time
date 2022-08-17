@@ -1,5 +1,6 @@
 import React from "react";
 import Card, { CardType } from "../Card/Card";
+import Title from "../Title/Title";
 import "./Menu.css";
 
 type displayMode = 'grid' | 'list';
@@ -76,9 +77,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     categoryChange = (selected: string) => {
-        // const selected = event.target.value;
-        // event.preventDefault();
-
         const cards = [...this.state.cards];
         const filtered = cards.filter(card => {
             return card.category === selected;
@@ -96,7 +94,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
         return (
             <>
-                <h1 className="text-center m-3">Order Delivery or Takeaway</h1>
+                <Title text="Order Delivery or Takeaway" />
 
                 <div className="d-flex justify-content-between px-5">
                     <div className="d-flex align-items-center">
