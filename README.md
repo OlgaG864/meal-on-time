@@ -23,11 +23,13 @@ Food delivery or takeaway with React.
     * Install dependencies for the Server:  
     `cd server`  
     `npm install`
-    * Install dependencies for React client:  
+3. Install dependencies for React client:  
     `cd client`  
     `npm install`
 
 ## Run The App
+> Make sure mongo server is running.
+
 1. Run the server - `cd client`, then:
     * Windows: `set DEBUG=meal-on-time:*; & npm start`
     * MacOS/Linux: `DEBUG=meal-on-time:* npm start`
