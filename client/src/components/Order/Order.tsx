@@ -13,7 +13,11 @@ function Order() {
 
     return (
         <>
-            <Title text={`Order: ${order.name}`} />
+            <Title text={`Order: ${order.name}`}>
+                <small className="text-muted d-block">
+                    <span>name of the restaurant</span>
+                </small>
+            </Title>
 
             <div className="container">
                 <div className="row">
