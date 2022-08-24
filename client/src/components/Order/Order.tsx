@@ -18,6 +18,14 @@ function Order() {
     const [deliveryMethod, setDeliveryMethod] = useState<string>('takeaway');
     const [paymentMethod, setPaymentMethod] = useState<string>('cc');
 
+    function updateDeliveryPrice(): number {
+        return deliveryMethod === 'delivery' ? 2 : 0;
+    }
+
+    function calcTotal(): number {
+        return order.price + updateDeliveryPrice();
+    }
+
     return (
         <>
             <Title text={`Order: ${order.name}`}>
@@ -83,7 +91,7 @@ function Order() {
                                     <label className="form-label">Delivery:</label>
                                 </div>
                                 <div className="col-8">
-                                    { }
+                                    {updateDeliveryPrice()}
                                 </div>
                             </div>
 
@@ -92,7 +100,7 @@ function Order() {
                                     <label className="form-label">Total:</label>
                                 </div>
                                 <div className="col-8">
-                                    { }
+                                    {calcTotal()}
                                 </div>
                             </div>
 
