@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { CardType } from "../Card/Card";
 import Title from "../Title/Title";
@@ -10,6 +11,12 @@ function Order() {
     const location = useLocation();
     const locationState = location as LocationState;
     const order = locationState.state;
+
+    const [name, setName] = useState<string>('');
+    const [address, setAddress] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
+    const [deliveryMethod, setDeliveryMethod] = useState<string>('takeaway');
+    const [paymentMethod, setPaymentMethod] = useState<string>('cc');
 
     return (
         <>
@@ -42,27 +49,23 @@ function Order() {
 
                 <hr />
 
-                {/* <div>
-                    <label>Price:</label>
-                    {order.price}
-                </div> */}
-
-
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <input type="text" className="form-control" placeholder="Name" />
-                            <input type="text" className="form-control" placeholder="Address" />
-                            <input type="text" className="form-control" placeholder="Phone" />
+                            <input value={name} onChange={(e) => setName(e.target.value)} type="text" className="form-control" placeholder="Name" />
+                            <input value={address} onChange={(e) => setAddress(e.target.value)} type="text" className="form-control" placeholder="Address" />
+                            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" className="form-control" placeholder="Phone" />
                         </div>
                         <div className="col">
-                            <select className="form-select">
-                                <option>Delivery</option>
+                            <select value={deliveryMethod} onChange={(e) => setDeliveryMethod(e.target.value)} className="form-select">
+                                <option value="takeaway">Takeaway</option>
+                                <option value="delivery">Delivery</option>
                             </select>
 
                             <label className="form-label">Payment Method:</label>
-                            <select className="form-select">
-                                <option>Payment</option>
+                            <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} className="form-select">
+                                <option value="cc">Credit Card</option>
+                                <option value="cash">Cash</option>
                             </select>
                         </div>
                         <div className="col">
