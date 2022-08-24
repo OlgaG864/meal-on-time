@@ -41,10 +41,65 @@ function Order() {
                 </div>
 
                 <hr />
-                <div>
+
+                {/* <div>
                     <label>Price:</label>
                     {order.price}
+                </div> */}
+
+
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <input type="text" className="form-control" placeholder="Name" />
+                            <input type="text" className="form-control" placeholder="Address" />
+                            <input type="text" className="form-control" placeholder="Phone" />
+                        </div>
+                        <div className="col">
+                            <select className="form-select">
+                                <option>Delivery</option>
+                            </select>
+
+                            <label className="form-label">Payment Method:</label>
+                            <select className="form-select">
+                                <option>Payment</option>
+                            </select>
+                        </div>
+                        <div className="col">
+                            <div className="row">
+                                <div className="col-4">
+                                    <label className="form-label">Price:</label>
+                                </div>
+                                <div className="col-8">
+                                    {order.price}
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="col-4">
+                                    <label className="form-label">Delivery:</label>
+                                </div>
+                                <div className="col-8">
+                                    { }
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="col-4">
+                                    <label className="form-label">Total:</label>
+                                </div>
+                                <div className="col-8">
+                                    { }
+                                </div>
+                            </div>
+
+                            <button className="btn btn-primary btn-lg">Pay Now</button>
+                        </div>
+                    </div>
                 </div>
+
+
+
             </div>
         </>
     );
