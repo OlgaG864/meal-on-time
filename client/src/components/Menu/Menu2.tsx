@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { unstable_batchedUpdates } from "react-dom";
 import Card, { CardType } from "../Card/Card";
 import Title from "../Title/Title";
 import "./Menu.css";
