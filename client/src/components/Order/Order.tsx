@@ -72,79 +72,85 @@ function Order() {
                 </div>
                 <hr />
                 <div className="container">
-                    <div className="row">
-                        <div className="col">
-                            <input
-                                value={formik.values.name}
-                                onChange={formik.handleChange}
-                                id="name"
-                                name="name"
-                                type="text"
-                                className="form-control"
-                                placeholder="Name"
-                            />
-                            <input
-                                value={formik.values.address}
-                                onChange={formik.handleChange}
-                                id="address"
-                                name="address"
-                                type="text"
-                                className="form-control"
-                                placeholder="Address"
-                            />
-                            <input
-                                value={formik.values.phone}
-                                onChange={formik.handleChange}
-                                id="phone"
-                                name="phone"
-                                type="text"
-                                className="form-control"
-                                placeholder="Phone"
-                            />
-                        </div>
-                        <div className="col">
-                            <select value={deliveryMethod} onChange={(e) => setDeliveryMethod(e.target.value as delivery)} className="form-select">
-                                <option value="takeaway">Takeaway</option>
-                                <option value="delivery">Delivery</option>
-                            </select>
-
-                            <label className="form-label">Payment Method:</label>
-                            <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value as payment)} className="form-select">
-                                <option value="cc">Credit Card</option>
-                                <option value="cash">Cash</option>
-                            </select>
-                        </div>
-                        <div className="col">
-                            <div className="row">
-                                <div className="col-4">
-                                    <label className="form-label">Price:</label>
-                                </div>
-                                <div className="col-8">
-                                    {order.price}
-                                </div>
+                    <form onSubmit={formik.handleSubmit}>
+                        <div className="row">
+                            <div className="col">
+                                <input
+                                    value={formik.values.name}
+                                    onChange={formik.handleChange}
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Name"
+                                />
+                                <input
+                                    value={formik.values.address}
+                                    onChange={formik.handleChange}
+                                    id="address"
+                                    name="address"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Address"
+                                />
+                                <input
+                                    value={formik.values.phone}
+                                    onChange={formik.handleChange}
+                                    id="phone"
+                                    name="phone"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Phone"
+                                />
                             </div>
+                            <div className="col">
+                                <select value={deliveryMethod} onChange={(e) => setDeliveryMethod(e.target.value as delivery)} className="form-select">
+                                    <option value="takeaway">Takeaway</option>
+                                    <option value="delivery">Delivery</option>
+                                </select>
 
-                            <div className="row">
-                                <div className="col-4">
-                                    <label className="form-label">Delivery:</label>
-                                </div>
-                                <div className="col-8">
-                                    {updateDeliveryPrice()}
-                                </div>
+                                <label className="form-label">Payment Method:</label>
+                                <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value as payment)} className="form-select">
+                                    <option value="cc">Credit Card</option>
+                                    <option value="cash">Cash</option>
+                                </select>
                             </div>
+                            <div className="col">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <label className="form-label">Price:</label>
+                                    </div>
+                                    <div className="col-8">
+                                        {order.price}
+                                    </div>
+                                </div>
 
-                            <div className="row">
-                                <div className="col-4">
-                                    <label className="form-label">Total:</label>
+                                <div className="row">
+                                    <div className="col-4">
+                                        <label className="form-label">Delivery:</label>
+                                    </div>
+                                    <div className="col-8">
+                                        {updateDeliveryPrice()}
+                                    </div>
                                 </div>
-                                <div className="col-8">
-                                    {calcTotal()}
+
+                                <div className="row">
+                                    <div className="col-4">
+                                        <label className="form-label">Total:</label>
+                                    </div>
+                                    <div className="col-8">
+                                        {calcTotal()}
+                                    </div>
                                 </div>
+
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary btn-lg">
+                                    Pay Now
+                                </button>
                             </div>
-
-                            <button className="btn btn-primary btn-lg">Pay Now</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
 
