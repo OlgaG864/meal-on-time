@@ -16,9 +16,6 @@ function Order() {
     const locationState = location as LocationState;
     const order = locationState.state;
 
-    // const [name, setName] = useState<string>('');
-    // const [address, setAddress] = useState<string>('');
-    // const [phone, setPhone] = useState<string>('');
     const [deliveryMethod, setDeliveryMethod] = useState<delivery>('takeaway');
     const [paymentMethod, setPaymentMethod] = useState<payment>('cc');
 
@@ -152,8 +149,6 @@ function Order() {
                         </div>
                     </form>
                 </div>
-
-
 
             </div>
         </>
