@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 // import Counter from './Counter/Counter';
 import Header from './components/Header/Header';
@@ -11,12 +11,10 @@ function App() {
         <>
             <Header />
 
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Menu defaultDisplay='grid' />} />
-                    <Route path='order' element={<Order />} />
-                </Routes>
-            </BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Menu defaultDisplay='grid' />} />
+                <Route path='order' element={<Order />} />
+            </Routes>
         </>
     );
 }

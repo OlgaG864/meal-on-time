@@ -26,7 +26,8 @@ class Card extends React.Component<Props> {
         return (
             <div className="card border-0 m-4 shadow bg-dark bg-opacity-10">
                 <img src={data.imageUrl} alt={data.name} className="card-img-top" />
-                <button onClick={() => this.props.categoryChange(data.category)} className='text-capitalize badge bg-info border-0'>
+                <button
+                    onClick={() => this.props.categoryChange(data.category)} className='text-capitalize badge bg-info border-0'>
                     {data.category}
                 </button>
                 <div className="card-body">
