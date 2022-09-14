@@ -1,9 +1,9 @@
 import { Navigate } from 'react-router-dom';
+import { verifyToken } from '../../services/auth';
 
 const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
     const { children } = props;
-    const token = localStorage.getItem('token');
-    const isLoggedIn = token && token.length > 0;
+    const isLoggedIn = verifyToken();
 
     return isLoggedIn ? (
         <>{children}</>

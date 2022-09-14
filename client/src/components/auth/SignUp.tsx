@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { handleRequest } from "../../services/ApiService";
 import Title from "../Title/Title";
 
 function SignUp() {
@@ -15,13 +16,7 @@ function SignUp() {
             password,
         };
 
-        fetch('http://localhost:3000/users/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
+        handleRequest('users/signup', data)
             .then(res => {
                 // console.log('registered');
                 navigate('/login');

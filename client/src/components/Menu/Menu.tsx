@@ -1,4 +1,5 @@
 import React from "react";
+import { getRequest } from "../../services/ApiService";
 import Card, { CardType } from "../Card/Card";
 import Title from "../Title/Title";
 import "./Menu.css";
@@ -32,19 +33,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     componentDidMount() {
-        // todo: create a service for this...
-        const token = localStorage.getItem('token');
-        if (!token || token.length === 0) {
+        const res = getRequest('cards/');
+        if (!res) {
             return;
         }
 
-        fetch('http://localhost:3000/cards/', {
-            method: 'GET',
-            headers: {
-                'x-auth-token': token
-            }
-        })
-            .then(res => res.json())
+        res.then(res => res.json())
             .then(json => {
                 this.setState(() => ({
                     cards: json,

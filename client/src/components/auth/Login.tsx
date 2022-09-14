@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Title from "../Title/Title";
 import Joi from "joi";
 import { useFormik } from "formik";
+import { handleRequest } from "../../services/ApiService";
+import { TOKEN_KEY } from "../../services/auth";
 
 interface IErrors {
     [key: string]: string;
@@ -44,16 +46,11 @@ function Login() {
         },
 
         onSubmit: values => {
-            fetch('http://localhost:3000/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(values)
-            })
-                .then(res => res.json())
+            const res = handleRequest('users/login', values);
+
+            res.then(res => res.json())
                 .then(json => {
-                    localStorage.setItem('token', json.token);
+                    localStorage.setItem(TOKEN_KEY, json.token);
                     navigate('/');
                 })
         },
