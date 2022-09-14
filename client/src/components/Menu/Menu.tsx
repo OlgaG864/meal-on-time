@@ -32,7 +32,18 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/cards/')
+        // todo: create a service for this...
+        const token = localStorage.getItem('token');
+        if (!token || token.length === 0) {
+            return;
+        }
+
+        fetch('http://localhost:3000/cards/', {
+            method: 'GET',
+            headers: {
+                'x-auth-token': token
+            }
+        })
             .then(res => res.json())
             .then(json => {
                 this.setState(() => ({

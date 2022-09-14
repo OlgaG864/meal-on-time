@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     if (!token) return res.status(401).send('Access denied. go to /signin');
 
     try {
-        req.token = jwt.verify(token, config.jwt_token);
+        jwt.verify(token, config.jwt_secret);
         next();
     }
     catch (err) {

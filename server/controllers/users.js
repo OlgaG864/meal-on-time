@@ -61,7 +61,7 @@ module.exports = {
         try {
             const user = await User.findOne({ email: value.email });
             if (user) {
-                return res.status(400).send("User already registered.");
+                return res.status(400).send('User already registered.');
             }
 
             const hash = await bcrypt.hash(value.password, 10);
