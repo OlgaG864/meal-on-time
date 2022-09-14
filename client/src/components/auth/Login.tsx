@@ -1,34 +1,69 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Title from "../Title/Title";
+import Joi from "joi";
+import { useFormik } from "formik";
+
+interface IErrors {
+    [key: string]: string;
+}
+
+// this page demonstrates the use of Formik and joi
 
 function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    function submit() {
-        const data = {
-            email,
-            password,
-        };
+    const formik = useFormik({
 
-        fetch('http://localhost:3000/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(json => {
-                localStorage.setItem('token', json.token);
-                navigate('/');
+        // assign default value to field
+        initialValues: {
+            email: '',
+            password: '',
+        },
+
+        validate: values => {
+            const errors: IErrors = {};
+
+            const schema = Joi.object().keys({
+                email: Joi.string().required().min(6).max(256),
+                password: Joi.string().required().min(6).max(1024),
+            });
+
+            const { error } = schema.validate(values);
+
+            if (error) {
+                error.details.forEach(item => {
+                    if (item.context) {
+                        const key = item.context.key + '';
+                        errors[key] = item.message;
+                    }
+                })
+            };
+
+            return errors;
+        },
+
+        onSubmit: values => {
+            fetch('http://localhost:3000/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values)
             })
-    }
+                .then(res => res.json())
+                .then(json => {
+                    localStorage.setItem('token', json.token);
+                    navigate('/');
+                })
+        },
+    });
 
     return (
-        <div className="p-3 form-max-w m-auto">
+        <form
+            onSubmit={formik.handleSubmit}
+            className="p-3 form-max-w m-auto d-block"
+        >
 
             <Title text="Login" />
 
@@ -37,26 +72,45 @@ function Login() {
                     className="form-control"
                     type="text"
                     placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    id="email"
+                    name="email"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                    onBlur={formik.handleBlur}
                 />
             </div>
+            {
+                formik.touched.email && formik.errors.email ? (
+                    <div className="text-danger">
+                        {formik.errors.email}</div>
+                ) : null
+            }
+
             <div className="mb-3">
                 <input
                     className="form-control"
                     type="password"
                     placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    id="password"
+                    name="password"
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                    onBlur={formik.handleBlur}
                 />
             </div>
+            {
+                formik.touched.password && formik.errors.password ? (
+                    <div className="text-danger">
+                        {formik.errors.password}</div>
+                ) : null
+            }
 
             <button
-                onClick={submit}
+                type="submit"
                 className="btn btn-primary btn-lg w-100">
                 Login
             </button>
-        </div>
+        </form>
     );
 }
 
