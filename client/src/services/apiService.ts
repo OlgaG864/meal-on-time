@@ -16,7 +16,6 @@ export const handleRequest =
 
 export const getRequest =
     function (endPoint: string): Promise<Response> | null {
-        const token = getToken();
         if (!verifyToken()) {
             return null;
         }
@@ -24,7 +23,7 @@ export const getRequest =
         return fetch(`${serverUrl}${endPoint}`, {
             method: 'GET',
             headers: {
-                'x-auth-token': token
+                'x-auth-token': getToken()
             }
         })
     }

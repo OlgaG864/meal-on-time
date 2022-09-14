@@ -1,5 +1,5 @@
 import React from "react";
-import { getRequest } from "../../services/ApiService";
+import { getRequest } from "../../services/apiService";
 import Card, { CardType } from "../Card/Card";
 import Title from "../Title/Title";
 import "./Menu.css";

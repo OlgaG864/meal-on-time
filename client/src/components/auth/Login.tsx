@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Title from "../Title/Title";
 import Joi from "joi";
 import { useFormik } from "formik";
-import { handleRequest } from "../../services/ApiService";
+import { handleRequest } from "../../services/apiService";
 import { TOKEN_KEY } from "../../services/auth";
 
 interface IErrors {
