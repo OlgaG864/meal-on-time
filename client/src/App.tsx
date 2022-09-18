@@ -7,6 +7,7 @@ import SignUp from './components/auth/SignUp';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Order from './components/Order/Order';
+import UpdateItem from './components/UpdateItem/UpdateItem';
 
 function App() {
     return (
@@ -20,6 +21,14 @@ function App() {
                     element={
                         <PrivateRoute>
                             <Menu defaultDisplay='grid' />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path='/update/:id'
+                    element={
+                        <PrivateRoute>
+                            <UpdateItem />
                         </PrivateRoute>
                     }
                 />

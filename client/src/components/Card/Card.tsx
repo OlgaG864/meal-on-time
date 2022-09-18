@@ -32,7 +32,9 @@ class Card extends React.Component<Props> {
                 </button>
                 <div className="card-body">
                     <div className="card-title">
-                        {data.name}
+                        <Link to={`/update/${data._id}`}>
+                            {data.name}
+                        </Link>
                     </div>
                     <div className="card-text">
                         {data.description}
